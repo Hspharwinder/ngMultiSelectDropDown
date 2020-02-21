@@ -1,0 +1,26 @@
+
+<h1>Multi selector dropdown</h1> 
+<!-- validation with reactive form  -->
+<form #stepOne="ngForm">
+  <ng-select [items]="items" bindLabel="name" name="multiSelect"
+   placeholder="Select item" appendTo="body" multiple="true"
+   #multiSelect="ngModel"
+    [(ngModel)]="selected" (change)='multiSelecteValue()' required>
+  </ng-select>
+  <div *ngIf="(multiSelect.errors && (multiSelect.dirty || multiSelect.touched))" class="register-error">
+    <div class="err-msg" [hidden]="!multiSelect.errors.required">Country is
+      required
+    </div>
+  </div>
+  <button>Submit</button>
+</form>
+
+<!-- simple -->
+<ng-select [items]="items" bindLabel="name"  placeholder="Select item" appendTo="body" multiple="true"
+   [(ngModel)]="selected" (change)='multiSelecteValue()' >
+</ng-select>
+
+<!-- https://www.freakyjolly.com/angular-ng-select-validation-multiselection-custom-property-binding-and-checkboxes/ -->
+
+
+<router-outlet></router-outlet>
